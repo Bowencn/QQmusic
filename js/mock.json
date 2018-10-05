@@ -1,0 +1,132 @@
+[{
+        "code": 0,
+        "color": 0,
+        "comment_num": 56125,
+        "cur_song_num": 100,
+        "date": "2018-09-16",
+        "day_of_year": "259",
+        "song_begin": 0,
+        "songlist": [{
+            "Franking_value": "1",
+            "cur_count": "1",
+            "data": {
+                "albumdesc": "致不易青年主题曲",
+                "albumid": 4525196,
+                "albummid": "003Rtibw458BC5",
+                "albumname": "违背的青春",
+                "alertid": 11,
+                "belongCD": 1,
+                "cdIdx": 0,
+                "interval": 336,
+                "isonly": 0,
+                "label": "0",
+                "msgid": 0,
+                "pay": {
+                    "payalbum": 0,
+                    "payalbumprice": 0,
+                    "paydownload": 0,
+                    "payinfo": 0,
+                    "payplay": 0,
+                    "paytrackmouth": 0,
+                    "paytrackprice": 0,
+                    "timefree": 0
+                },
+                "preview": {
+                    "trybegin": 0,
+                    "tryend": 0,
+                    "trysize": 0
+                },
+                "rate": 31,
+                "singer": [{
+                    "id": 5062,
+                    "mid": "002J4UUk29y8BY",
+                    "name": "薛之谦"
+                }],
+                "size128": 5390219,
+                "size320": 13475222,
+                "size5_1": 0,
+                "sizeape": 71700905,
+                "sizeflac": 71808082,
+                "sizeogg": 7867433,
+                "songid": 216514336,
+                "songmid": "0032ZOkm0LBgHW",
+                "songname": "违背的青春",
+                "songorig": "违背的青春",
+                "songtype": 0,
+                "strMediaMid": "0032ZOkm0LBgHW",
+                "stream": 1,
+                "switch": 605971,
+                "type": 0,
+                "vid": ""
+            },
+            "in_count": "13",
+            "mb": "xuezhiqian",
+            "old_count": "2",
+            "vid": {
+                "Fstatus": null
+            }
+        }]
+    },
+    {
+        "Franking_value": "1",
+        "cur_count": "2",
+        "data": {
+            "albumdesc": "《江湖儿女》电影推广曲",
+            "albumid": 4603869,
+            "albummid": "004g1C7Y4X1WlO",
+            "albumname": "有多少爱可以重来",
+            "alertid": 11,
+            "belongCD": 1,
+            "cdIdx": 0,
+            "interval": 261,
+            "isonly": 0,
+            "label": "0",
+            "msgid": 0,
+            "pay": {
+                "payalbum": 0,
+                "payalbumprice": 0,
+                "paydownload": 0,
+                "payinfo": 0,
+                "payplay": 0,
+                "paytrackmouth": 0,
+                "paytrackprice": 0,
+                "timefree": 0
+            },
+            "preview": {
+                "trybegin": 0,
+                "tryend": 0,
+                "trysize": 0
+            },
+            "rate": 23,
+            "singer": [{
+                "id": 2241311,
+                "mid": "001Iu4Dv1NzRCD",
+                "name": "摩登兄弟刘宇宁"
+            }],
+            "size128": 4186501,
+            "size320": 10465443,
+            "size5_1": 0,
+            "sizeape": 0,
+            "sizeflac": 29218649,
+            "sizeogg": 5875660,
+            "songid": 217122344,
+            "songmid": "0024c8zt4A4TQG",
+            "songname": "有多少爱可以重来",
+            "songorig": "有多少爱可以重来",
+            "songtype": 0,
+            "strMediaMid": "0024c8zt4A4TQG",
+            "stream": 1,
+            "switch": 605971,
+            "type": 0,
+            "vid": "u002728u3gg"
+        },
+        "in_count": "4",
+        "mb": "",
+        "old_count": "1",
+        "vid": {
+            "Fmv_id": "1485276",
+            "Fstatus": "1",
+            "Fvid": "u002728u3gg"
+        }
+    }
+]

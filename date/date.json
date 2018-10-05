@@ -1,0 +1,41 @@
+[
+  {
+    "image": "../music/song_1.jpg",
+    "audio": "../music/song_1.mp3",
+    "name": "丑八怪",
+    "singer": "薛之谦",
+    "duration": "253",
+    "album": "意外",
+    "isLike": true,
+    "lyrics": ""
+  },
+  {
+    "image": "../music/song_2.jpg",
+    "audio": "../music/song_2.mp3",
+    "name": "小半",
+    "album": "小梦大半",
+    "singer": "陈粒",
+    "duration": 297,
+    "isLike": false
+  },
+  {
+    "image": "../music/song_3.jpg",
+    "audio": "../music/song_3.mp3",
+    "name": "Shape of You",
+    "album": "÷",
+    "singer": "ed sheeran",
+    "duration": 235,
+    "isLike": false
+  },
+  {
+    "audio": "http://ws.stream.qqmusic.qq.com/C1000032ZOkm0LBgHW.m4a?fromtag=0&guid=126548448",
+    "image": "../music/song_3.jpg",
+
+    "name": "违背的青春",
+    "album": "致不易青年主题曲",
+    "singer": "薛之谦",
+    "duration": 336,
+    "isLike": false
+  }
+
+]
