@@ -26,10 +26,8 @@
             
 
             this.audio.onended = function () {
-               
                 index++;
-                this.audio.src = 
-                
+                // this.audio.src = ;
             }
 
 
