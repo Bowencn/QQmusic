@@ -7,7 +7,10 @@
     var timer;
     var lock = true;
     var index;
-
+    var per;
+    var stoptime;
+    var width = $(".pro-bottom").outerWidth(true);
+    // 时间转换
     function secondToDate(time) {
         time = Math.round(time);
         var m = Math.floor((time / 60 % 60));
@@ -22,97 +25,105 @@
     };
 
     function start(Duration) {
-        // curDuration = Duration;
+        curDuration = Duration;
         // startTime = new Date().getTime();
-
-
-        // function frame() {
+        
+        if(lock){
+            start = 0;
+            lock = false; 
+        }else{
+            start = stoptime;  
+            
+        }
+        clock(start, curDuration);
+        // return function frame() {
         //     var curTime = new Date().getTime();
         //     let percent = lastPer + (curTime - startTime) / (curDuration * 1000);
-        //     var per = percent * curDuration;
-        //     console.log(per);
 
-        //     time = secondToDate(per)
+
+        //     // per = percent * curDuration;
+        //     // console.log(per);
+        //     // // console.log(curDuration);
+        //     // time = secondToDate(per)
         //     update(time, percent);
         //     frameId = requestAnimationFrame(frame);
-        //     allTime = secondToDate(Duration)
-
-        //     if(time == Duration){
-        //         cancelAnimationFrame(frameId);
-        //         index++;
-        //         console.log(index);
-
-        //     }
+        //     // allTime = secondToDate(Duration)
         // };
-
-
-
         // frame();
-    };
 
-    function frames() {
-        frame()
+        
+    };
+    //切换歌曲重置开始时间
+    function check(){
+        clear();
+        lock = true;
+        update("00 : 00",0)
+    }
+    //清除定时器
+    function clear() {
+        // cancelAnimationFrame(frameId);
+        clearInterval(timer);
     }
 
     function stop(Time) {
-        cancelAnimationFrame(frameId);
-        var stopTime = new Date().getTime();
-        curDuration = Time
-
-
-        lastPer = lastPer + (stopTime - startTime) / (curDuration * 1000);
-        clearInterval(timer);
-
+        // cancelAnimationFrame(frameId);
+        // clearInterval(timer);
+        // var stopTime = new Date().getTime();
+        // curDuration = Time;
+        // lastPer = lastPer + (stopTime - startTime) / (curDuration * 1000);
+        clear();
+        
     }
 
     function update(time, per) {
         // var curTime = per * curDuration;
-
-
         // time = secondToDate(time);
         $(".start-time").html(time);
-
-
         var perX = (per - 1) * 100 + '%';
         $(".pro-top").css({
             transform: 'translate(' + perX + ')'
         });
     }
-
-    function clock(clicktime, Duration, width) {
-      
-
+    //得到暂停时间
+    function data(stime){
+        stoptime = stime;
+        return stoptime;
+    }
+    
+    //计时器
+    function clock(begin, over) {
+        let = stime = begin;
+        let = otime = over;
+        
         timer = setInterval(function () {
-            if (clicktime >= Duration) {
+            stime++;
+            per = (stime / otime)
+            // console.log(per);
+            
+            time = secondToDate(stime)
+            update(time, per)
+            data(stime);
+            if (stime >= otime) {
                 clearInterval(timer);
-                
-            } else {
-                percent = lastPer + (clicktime += 1);
-                time = secondToDate(percent)
-                console.log(time);
-                var perX = (percent / Duration);
-                update(time, perX);
             }
-
-
-
+            
+            // console.log(stoptime);
 
         }, 1000)
 
 
     }
-    function btn(clickTime, duration, width) {
-        clearInterval(timer);
-        // clock(clickTime,songlist[index].data.interval,width)
-    }
+
+
     root.pro = {
         stop: stop,
         update: update,
         start: start,
         time: time,
         secondToDate: secondToDate,
-        // clock: clock,
-        btn: btn,
+        clear: clear,
+        check: check,
+
 
     }
 

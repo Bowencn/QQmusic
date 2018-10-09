@@ -55,7 +55,7 @@
 
         var html =
 
-            '<li ix = ' + info.cur_count + '>' +
+            '<li calss = "musicList" ix = ' + info.cur_count + '>' +
             ' <div class="songlist-item">' +
             ' <div class="edit">' +
             '   <input type="checkbox" class="songlist-checkbox">' +

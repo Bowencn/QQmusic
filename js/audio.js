@@ -1,10 +1,16 @@
 (function (root) {
     function audioControl() {
         this.audio = new Audio();
-        this.status = "pause"
+        this.status = "pause";
+        this.audio.addEventListener('ended',function(){
+            root.control.next();
+            
+        })
     };
+    console.log(window.player)
     audioControl.prototype = {
         play: function () {
+            
             this.audio.play();
             this.status = "play"
         },
@@ -21,14 +27,8 @@
             this.audio.play();
             this.status = "play"
         },
-        ended: function (index) {
-            let = index = index
-            
-
-            this.audio.onended = function () {
-                index++;
-                // this.audio.src = ;
-            }
+        ended: function () {
+           this.audio.ended
 
 
         }
