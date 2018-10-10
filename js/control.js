@@ -12,8 +12,10 @@
         audio.play();
         $(".btn-pause").css("backgroundPosition", "-27px 0px");
         root.pro.check();
-        root.pro.start(songTime);
-        console.log(songList);
+        root.pro.start(songlist[index].data.intervale,0);
+        console.log(songlist[index].data.interval);
+        
+        
         
     }
     function next(){
@@ -29,7 +31,7 @@
         audio.play();
         $(".btn-pause").css("backgroundPosition", "-27px 0px");
         root.pro.check();
-        root.pro.start(songTime);
+        root.pro.start(songlist[index].data.intervale,0);
         console.log(index);
         
     }
@@ -41,8 +43,8 @@
         } else {
             audio.pause();
             $(".btn-pause").css("backgroundPosition", "0px 0px");
-
-            root.pro.stop(songTime);
+            root.pro.stop(songTime)
+            // root.pro.stop(songlist[index].data.intervale);
         }
     }
     root.control = {

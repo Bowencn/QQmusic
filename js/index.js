@@ -8,10 +8,12 @@ var width;
 var id;
 var src;
 var songTime;
+var isMove;
+var volumeNum;
 const audio = new root.audioControl();
-console.log(audio.audio.ended);
-var a1 = $(audio.audio);
-console.log(a1);
+
+
+
 
 function bindmove() {
     var offset = $(".pro-bottom").offset();
@@ -32,17 +34,60 @@ function bindmove() {
                 time = root.pro.secondToDate(clickTime);
                 console.log(time);
 
-
                 root.pro.stop(clickTime);
-                root.pro.start(songTime);
+                root.pro.start(songTime,clickTime,true);
 
-                root.pro.update(clickTime, per);
+                root.pro.update(time, per);
             }
 
             audio.playTo(clickTime);
             $(".btn-pause").css("backgroundPosition", "-27px 0px");
         }
     });
+    //音量部分
+    (function volume() {
+        var dragging = false;
+        var iX;
+        var oX;
+        $(".pro-voice-point").mousedown(function (e) {
+            dragging = true;
+            iX = e.clientX - this.offsetLeft;
+            // iY = e.clientY - this.offsetTop;
+            this.setCapture && this.setCapture();
+            return false;
+        });
+        document.onmousemove = function (e) {
+            if (dragging) {
+                var e = e || window.event;
+                oX = e.clientX - iX;
+                if (oX < 15) {
+                    oX = 15;
+                } else if (oX > 85) {
+                    oX = 85
+                }
+
+                $(".pro-voice-point").css({
+                    "left": oX + "px"
+                });
+                return false;
+            }
+        };
+        $(document).mouseup(function (e) {
+            dragging = false;
+            //每一份代表1.42音量
+            var volumenumebr = 1.42;
+            var oxNum = (oX - 15) / 100;
+            volumeNum = volumenumebr * oxNum;
+            audio.volume(volumeNum)
+            // $(".pro-voice-point")[0].releaseCapture();
+            // e.cancelBubble = true;
+        })
+
+
+
+    })()
+
+
     // $(".pro-point").mousedown(function (e) {
     //     if (e.which == 1) {
     //         $(".pro-point").mousemove(function (e) {
@@ -53,7 +98,6 @@ function bindmove() {
 
     //             console.log(per);
 
-
     //         })
     //     }
 
@@ -62,10 +106,8 @@ function bindmove() {
     // }).mouseup(function (e) {
     //     console.log(3);
 
-
     // })
 }
-
 
 function music(num) {
     id = songlist[num].data.songmid;
@@ -73,14 +115,28 @@ function music(num) {
         "http://ws.stream.qqmusic.qq.com/C100" +
         id +
         ".m4a?fromtag=0&guid=126548448";
-}
+    //   lrc =
+    //     "https://route.showapi.com/213-2?showapi_appid=54411&showapi_sign=55b7ca99e210452a86269a9f09def34c&musicid=" +
+    //     id;
+    //     var unescapeHTML = function(lrc){
+    //         　　var t=document.createElement("div");
+    //         　　return t.innerHTML=lrc+"";
+    //         }
+    //     console.log(unescapeHTML);
 
+}
+// function lyric() {
+//   lyricsrc =
+//     "https://route.showapi.com/213-2?showapi_appid=54411&showapi_sign=55b7ca99e210452a86269a9f09def34c&musicid=" +
+//     id;
+// }
 function bindEvent() {
     console.log(songlist[index].data);
     songTime = songlist[index].data.interval;
     music(index);
     audio.getAudio(src);
-
+    // volumeNum = 0.99;
+    // audio.volume(volumeNum)
     $(".btn-prev").on("click", function () {
         // if (index === 0) {
         //     index = len - 1;
@@ -114,56 +170,53 @@ function bindEvent() {
         root.control.next();
     });
 
-    $(".btn-pause,.list-menu-play").on("click", function () {
+    $(".btn-pause,.list-menu-play")
+        .on("click", function () {
+            // if (audio.status == "pause") {
+            //     audio.play();
+            //     $(".btn-pause").css("backgroundPosition", "-27px 0px");
+            //     root.pro.start(songTime);
+            // } else {
+            //     audio.pause();
+            //     $(".btn-pause").css("backgroundPosition", "0px 0px");
 
-        // if (audio.status == "pause") {
-        //     audio.play();
-        //     $(".btn-pause").css("backgroundPosition", "-27px 0px");
-        //     root.pro.start(songTime);
-        // } else {
-        //     audio.pause();
-        //     $(".btn-pause").css("backgroundPosition", "0px 0px");
-
-        //     root.pro.stop(songTime);
-        // }
-        root.control.pop();
-    }).on("keydown", function (e) {
-        if (e.keyCode == 32) {
-
+            //     root.pro.stop(songTime);
+            // }
             root.control.pop();
-        }
-        
-    });
-
+        })
+        .on("keydown", function (e) {
+            if (e.keyCode == 32) {
+                root.control.pop();
+            }
+        });
 
     // audio.ended(index);
 
     $(".songlist-line").one("mouseover", function () {
+        $(".songlist-line>li")
+            .off("dbclick")
+            .on("dblclick", function () {
+                console.log("dbclick");
 
+                index = $(this).attr("ix") - 1;
 
-        $(".songlist-line>li").off("dbclick").on("dblclick", function () {
-            console.log("dbclick");
+                // music(index);
+                // root.render(songlist[index].data);
+                // audio.getAudio(src);
+                // audio.play();
+                // $(".btn-pause").css("backgroundPosition", "-27px 0px");
+                // root.pro.check();
+                // root.pro.start(songlist[index].data.interval);
 
-            index = $(this).attr("ix") - 1;
-
-
-            // music(index);
-            // root.render(songlist[index].data);
-            // audio.getAudio(src);
-            // audio.play();
-            // $(".btn-pause").css("backgroundPosition", "-27px 0px");
-            // root.pro.check();
-            // root.pro.start(songlist[index].data.interval);
-
-            music(index);
-            root.render(songlist[index].data);
-            audio.getAudio(src);
-            audio.play();
-            $(".btn-pause").css("backgroundPosition", "-27px 0px");
-            root.pro.check();
-            root.pro.start(songTime);
-            // root.pro.btn(clickTime, songlist[index].data.interval, width);
-        })
+                music(index);
+                root.render(songlist[index].data);
+                audio.getAudio(src);
+                audio.play();
+                $(".btn-pause").css("backgroundPosition", "-27px 0px");
+                root.pro.check();
+                root.pro.start(songTime);
+                // root.pro.btn(clickTime, songlist[index].data.interval, width);
+            });
         // $(".songlist-time").on("mouseover",function () {
 
         //     $(this).css("display","none");
@@ -172,6 +225,51 @@ function bindEvent() {
         //     $(this).css("display","inline-block")
         //     $(".songlist-delete").css("display","none")
         // })
+    });
+    let num = 0;
+    $(".btn-style").on("click", function () {
+        num += 1;
+        //判断点击次数
+        switch (num) {
+            case 1:
+            //顺序播放
+                $(this).css({
+                    "background-position": "0 -260px",
+                    "width": "23px",
+                    "height": "20px"
+                });
+                audio.loop(false)
+                break;
+            case 2:
+            //随机播放
+                console.log(222);
+                $(this).css({
+                    "background-position": "0 -74px",
+                    "width": "25px",
+                    "height": "19px"
+                });
+                audio.loop(false)
+                break;
+            case 3:
+            //单曲循环
+                $(this).css({
+                    "background-position": "0 -232px",
+                    "width": "26px",
+                    "height": "25px"
+                });
+                audio.loop(true)
+                break;
+            default:
+            //列表循环
+                $(this).css({
+                    "background-position": "0 -205px",
+                    "width": "26px",
+                    "height": "25px"
+                });
+                audio.loop(false)
+                num = 0;
+
+        }
     })
     // $(".btn-like").on("click", function () {
     //     if (songList[index].isLike) {
@@ -190,7 +288,6 @@ function bindEvent() {
 
     //     $(".list-menu-play").css("opacity", "1")
     // })
-
 }
 
 function getData() {

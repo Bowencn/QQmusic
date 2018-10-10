@@ -9,7 +9,7 @@
     var index;
     var per;
     var stoptime;
-    var width = $(".pro-bottom").outerWidth(true);
+  
     // 时间转换
     function secondToDate(time) {
         time = Math.round(time);
@@ -24,10 +24,15 @@
         return m + " : " + s;
     };
 
-    function start(Duration) {
+    function start(Duration,stoptime,bl) {
         curDuration = Duration;
         // startTime = new Date().getTime();
-        
+        console.log(curDuration);
+        //直接跳转锁
+        if(bl){
+            lock = false;
+        }
+        //播放后吧锁关上 避免重置计数
         if(lock){
             start = 0;
             lock = false; 
