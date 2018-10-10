@@ -18,6 +18,7 @@
                 audio.play();
                 root.pro.start(songTime,0,false);
             } else {
+                
                 root.control.next()
             }
 
@@ -61,19 +62,11 @@
         },
         loop: function (lock) {
             if (lock) {
-                // this.audio.loop = "loop";
                 data(true);
-
-
-
                 console.log("开启单曲循环");
             } else {
                 data(false)
-
-
             };
-
-
         }
     }
     root.audioControl = audioControl;

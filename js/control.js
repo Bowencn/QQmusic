@@ -6,6 +6,12 @@
         } else {
             index--;
         }
+        
+        if(lock){
+            index = arr.pop()
+        }
+        
+        
         music(index);
         root.render(songlist[index].data);
         audio.getAudio(src);
@@ -24,7 +30,11 @@
         } else {
             index++;
         }
-        console.log(songlist[index].data.singer[0].name);
+        if(lock){
+            index = arr.pop()
+        }
+        
+        
         music(index);
         root.render(songlist[index].data);
         audio.getAudio(src);
@@ -32,7 +42,7 @@
         $(".btn-pause").css("backgroundPosition", "-27px 0px");
         root.pro.check();
         root.pro.start(songTime,0);
-        console.log(index);
+        
         
     }
     function playorpause(){

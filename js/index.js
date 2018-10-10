@@ -10,6 +10,8 @@ var src;
 var songTime;
 var isMove;
 var volumeNum;
+var arr;
+var lock = false;
 const audio = new root.audioControl();
 
 
@@ -238,17 +240,23 @@ function bindEvent() {
                     "width": "23px",
                     "height": "20px"
                 });
-                audio.loop(false)
+                audio.loop(false);
+                lock = false;
                 break;
             case 2:
             //随机播放
-                console.log(222);
+                console.log("随机播放");
+                
                 $(this).css({
                     "background-position": "0 -74px",
                     "width": "25px",
                     "height": "19px"
                 });
-                audio.loop(false)
+                audio.loop(false);
+                
+                arr = root.num.random();
+                lock = true;
+                
                 break;
             case 3:
             //单曲循环
@@ -257,6 +265,7 @@ function bindEvent() {
                     "width": "26px",
                     "height": "25px"
                 });
+                lock = false;
                 audio.loop(true)
                 break;
             default:
@@ -266,6 +275,7 @@ function bindEvent() {
                     "width": "26px",
                     "height": "25px"
                 });
+                lock = false;
                 audio.loop(false)
                 num = 0;
 
@@ -298,8 +308,7 @@ function getData() {
         jsonp: "jsonpCallback",
         scriptCharset: "GBK",
         success: function (data) {
-            console.log(data);
-
+            
             songnum = data.cur_song_num;
             songlist = data.songlist;
             root.render(songlist[0].data);
