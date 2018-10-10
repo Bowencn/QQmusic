@@ -9,7 +9,7 @@
     var index;
     var per;
     var stoptime;
-  
+
     // 时间转换
     function secondToDate(time) {
         time = Math.round(time);
@@ -24,21 +24,24 @@
         return m + " : " + s;
     };
 
-    function start(Duration,stoptime,bl) {
+    function start(Duration, stop, bl) {
         curDuration = Duration;
         // startTime = new Date().getTime();
-        console.log(curDuration);
+
         //直接跳转锁
-        if(bl){
+        if (bl) {
             lock = false;
+            stoptime = stop;
         }
         //播放后吧锁关上 避免重置计数
-        if(lock){
+        if (lock) {
             start = 0;
-            lock = false; 
-        }else{
-            start = stoptime;  
-            
+            lock = false;
+        } else {
+
+
+            start = stoptime;
+
         }
         clock(start, curDuration);
         // return function frame() {
@@ -56,13 +59,13 @@
         // };
         // frame();
 
-        
+
     };
     //切换歌曲重置开始时间
-    function check(){
+    function check() {
         clear();
         lock = true;
-        update("00 : 00",0)
+        update("00 : 00", 0)
     }
     //清除定时器
     function clear() {
@@ -77,7 +80,7 @@
         // curDuration = Time;
         // lastPer = lastPer + (stopTime - startTime) / (curDuration * 1000);
         clear();
-        
+
     }
 
     function update(time, per) {
@@ -90,29 +93,32 @@
         });
     }
     //得到暂停时间
-    function data(stime){
+    function data(stime) {
         stoptime = stime;
+
+
         return stoptime;
     }
-    
+
     //计时器
     function clock(begin, over) {
         let = stime = begin;
         let = otime = over;
-        
+
         timer = setInterval(function () {
             stime++;
             per = (stime / otime)
-            // console.log(per);
-            
+
+
+
             time = secondToDate(stime)
             update(time, per)
             data(stime);
-            if (stime >= otime) {
+            if (stime >= (otime)-0.5) {
                 clearInterval(timer);
             }
-            
-            // console.log(stoptime);
+
+
 
         }, 1000)
 

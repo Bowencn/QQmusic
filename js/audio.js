@@ -1,6 +1,6 @@
 (function (root) {
     var  lock = false;
-    function lock(olock){
+    function data(olock){
         lock = olock;
     }
     
@@ -12,10 +12,11 @@
             
 
             if (lock) {
+                console.log(111111);
                 
                 root.pro.check();
-                this.audio.play();
-                root.pro.start(songlist[index].data.intervale,0,true);
+                audio.play();
+                root.pro.start(songTime,0,false);
             } else {
                 root.control.next()
             }
@@ -61,13 +62,13 @@
         loop: function (lock) {
             if (lock) {
                 // this.audio.loop = "loop";
-                lock(true);
+                data(true);
 
 
 
                 console.log("开启单曲循环");
             } else {
-                this.audio.loop = "";
+                data(false)
 
 
             };

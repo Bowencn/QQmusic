@@ -12,8 +12,8 @@
         audio.play();
         $(".btn-pause").css("backgroundPosition", "-27px 0px");
         root.pro.check();
-        root.pro.start(songlist[index].data.intervale,0);
-        console.log(songlist[index].data.interval);
+        root.pro.start(songTime,0);
+        
         
         
         
@@ -31,7 +31,7 @@
         audio.play();
         $(".btn-pause").css("backgroundPosition", "-27px 0px");
         root.pro.check();
-        root.pro.start(songlist[index].data.intervale,0);
+        root.pro.start(songTime,0);
         console.log(index);
         
     }
