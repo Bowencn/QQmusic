@@ -37,7 +37,7 @@ function bindmove() {
                 console.log(time);
 
                 root.pro.stop(clickTime);
-                root.pro.start(songTime,clickTime,true);
+                root.pro.start(songTime, clickTime, true);
 
                 root.pro.update(time, per);
             }
@@ -139,6 +139,44 @@ function bindEvent() {
     audio.getAudio(src);
     // volumeNum = 0.99;
     // audio.volume(volumeNum)
+    //实现全选与反选
+    // $(".songlist-checkboxall").click(function () {
+    //     console.log(this);
+
+    //     if ($(this).prop("checked")) {
+    //         $("input[name=checkitem]:checkbox").each(function () {
+    //             $(this).prop("checked", true);
+    //         });
+    //     } else {
+    //         $("input[name=checkitem]:checkbox").each(function () {
+    //             $(this).prop("checked", false);
+    //         });
+    //     }
+    // });
+    //全选操作
+    $("#checkall").on("click", function () {
+        var all = $("input")
+        
+        
+        for (var i = 1; i < all.length - 1; i++) {
+            all[i].checked = all[0].checked;
+        }
+        console.log(all[0].checked);
+        
+    })
+    
+    //    $("#check").each(function(){
+    //        console.log(1);
+
+    //     $(this).click(function(){
+    //         if($(this).attr('checked')){
+    //             $(':checkbox[type="checkbox"][name='+$(this).attr("name")+']').removeAttr('checked');
+    //             $(this).attr('checked','checked');
+    //         }
+    //     });
+    // });
+
+
     $(".btn-prev").on("click", function () {
         // if (index === 0) {
         //     index = len - 1;
@@ -234,7 +272,7 @@ function bindEvent() {
         //判断点击次数
         switch (num) {
             case 1:
-            //顺序播放
+                //顺序播放
                 $(this).css({
                     "background-position": "0 -260px",
                     "width": "23px",
@@ -244,22 +282,22 @@ function bindEvent() {
                 lock = false;
                 break;
             case 2:
-            //随机播放
+                //随机播放
                 console.log("随机播放");
-                
+
                 $(this).css({
                     "background-position": "0 -74px",
                     "width": "25px",
                     "height": "19px"
                 });
                 audio.loop(false);
-                
+
                 arr = root.num.random();
                 lock = true;
-                
+
                 break;
             case 3:
-            //单曲循环
+                //单曲循环
                 $(this).css({
                     "background-position": "0 -232px",
                     "width": "26px",
@@ -269,7 +307,7 @@ function bindEvent() {
                 audio.loop(true)
                 break;
             default:
-            //列表循环
+                //列表循环
                 $(this).css({
                     "background-position": "0 -205px",
                     "width": "26px",
@@ -308,7 +346,7 @@ function getData() {
         jsonp: "jsonpCallback",
         scriptCharset: "GBK",
         success: function (data) {
-            
+
             songnum = data.cur_song_num;
             songlist = data.songlist;
             root.render(songlist[0].data);

@@ -58,7 +58,7 @@
             '<li calss = "musicList" ix = ' + info.cur_count + '>' +
             ' <div class="songlist-item">' +
             ' <div class="edit">' +
-            '   <input type="checkbox" class="songlist-checkbox"><label for="check"></label>' +
+            '   <input type="checkbox" id=check' + info.cur_count+' class="songlist-checkbox" name="checkitem"><label for="check"></label>' +
             '</div>' +
             ' <div class="songlist-three">' +
             '<div class="songlist-name">' + data.songname + '</div>' +

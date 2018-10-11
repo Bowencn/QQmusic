@@ -192,8 +192,6 @@ body {
   height: 14px;
   line-height: 14px;
   background-position: -1000px;
-  /*第三部分做一个active的效果*/
-  /*选中之后的样式*/
   /*选中后的效果*/
 }
 .mod-player .player-bd .player-style .list .cont .song-list .songlist-header .edit .songlist-checkbox {
@@ -217,26 +215,18 @@ body {
                           阴影的颜色 ：   
                       */
 }
-.mod-player .player-bd .player-style .list .cont .song-list .songlist-header .edit .songlist-checkbox + label:active,
-.mod-player .player-bd .player-style .list .cont .song-list .songlist-header .edit .songlist-checkbox + label:checked + label:active {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-.mod-player .player-bd .player-style .list .cont .song-list .songlist-header .edit .songlist-checkbox:checked + label {
-  background-color: #e9ecee;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
 .mod-player .player-bd .player-style .list .cont .song-list .songlist-header .edit .songlist-checkbox:checked + label:after {
   content: "\2714";
   /*这是一个对勾*/
   position: absolute;
-  font-size: 12px;
+  font-size: 14px;
   /*设置对勾的大小*/
   top: 0px;
   left: 2px;
   /*设置位置的偏向*/
-  color: #009900;
+  color: #fff;
   /*设置颜色绿色*/
-  font-weight: bold;
+  font-weight: 200;
   /*设置对勾的粗细*/
 }
 .mod-player .player-bd .player-style .list .cont .song-list .songlist-header .header-name {
@@ -309,12 +299,41 @@ body {
   background-position: -1000px;
 }
 .mod-player .player-bd .player-style .list .cont .song-list .scroll .songlist-line li .songlist-item .edit .songlist-checkbox {
-  width: 14px;
-  height: 14px;
-  outline: 0;
-  border-color: rgba(225, 225, 225, 0.2);
   opacity: 0;
   cursor: pointer;
+}
+.mod-player .player-bd .player-style .list .cont .song-list .scroll .songlist-line li .songlist-item .edit .songlist-checkbox + label {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  /*lable是内联元素所以需要加inline-block*/
+  padding: 7px;
+  /*设置复选框大小*/
+  /*设置背景颜色*/
+  /*复选框border*/
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  /*创建的阴影效果  这里需要了解box-shadow的属性，前三个值分别是 
+                                阴影离开横方向的距离   :offset-x
+                                阴影离开纵方向的距离   ：offset-y
+                                阴影的模糊半径： 
+                                阴影的颜色 ：   
+                            */
+}
+.mod-player .player-bd .player-style .list .cont .song-list .scroll .songlist-line li .songlist-item .edit .songlist-checkbox:checked + label:after {
+  content: "\2714";
+  /*这是一个对勾*/
+  position: absolute;
+  font-size: 12px;
+  /*设置对勾的大小*/
+  top: 0px;
+  left: 2px;
+  /*设置位置的偏向*/
+  color: #fff;
+  /*设置颜色绿色*/
+  font-weight: bold;
+  /*设置对勾的粗细*/
 }
 .mod-player .player-bd .player-style .list .cont .song-list .scroll .songlist-line li .songlist-item .songlist-number {
   left: 16px;
@@ -411,7 +430,7 @@ body {
 .mod-player .player-bd .player-style .list .cont .song-list .scroll .songlist-line li .songlist-item .songlist-other {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 38px;
   overflow: inherit;
 }
