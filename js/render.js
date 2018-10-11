@@ -18,14 +18,14 @@
         
        
         var html =
-            '<div class="song-info-name song-txt">歌曲名:  &nbsp;' + '<a href="">' + info.songname + '</a></div>' +
-            '<div class="song-info-singer song-txt">歌手名: &nbsp;' + '<a href="">' + info.singer[0].name + '</a></div>' +
-            '<div class="song-info-album song-txt">专辑名: &nbsp;' + '<a href="">' + info.albumname + '</a></div>';
+            '<div class="song-info-name song-txt">歌曲名:  &nbsp;' + '<a href="javascript:;">' + info.songname + '</a></div>' +
+            '<div class="song-info-singer song-txt">歌手名: &nbsp;' + '<a href="javascript:;">' + info.singer[0].name + '</a></div>' +
+            '<div class="song-info-album song-txt">专辑名: &nbsp;' + '<a href="javascript:;">' + info.albumname + '</a></div>';
         
             var btn = 
             '<div class="player-btn-name">'+
-                    '<a href="" class="player-btn-song-name">'+ info.songname +'</a>-'+
-                    '<a href="" class="player-btn-song-singer">'+ info.singer[0].name  +'</a></div>'+
+                    '<a href="javascript:;" class="player-btn-song-name">'+ info.songname +'</a>-'+
+                    '<a href="javascript:;" class="player-btn-song-singer">'+ info.singer[0].name  +'</a></div>'+
                 // '<div class="player-btn-time">'+  + ' &nbsp;/&nbsp; '+ time +'</div>';
                 '<div class="player-btn-time"><span class="start-time">00 : 00</span>&nbsp; /&nbsp; <span>'+ time +'</span></div>'
                 $(".song-info").html(html);
@@ -35,7 +35,7 @@
 
     function renderImg(albummid) {
         var image = "https://y.gtimg.cn/music/photo_new/T002R300x300M000"+ albummid +".jpg?max_age=2592000";
-        var img = '<a href="" class="song-info-cover">' +
+        var img = '<a href="javascript:;" class="song-info-cover">' +
             '<img src="' + image + '"alt="" class="song-image">' +
             '<i class="song-image-back"></i></a>';
         $(".song-info").prepend(img);
