@@ -35,6 +35,35 @@ body {
   left: 0;
   top: 0;
 }
+.flex {
+  position: fixed;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to right bottom, #fc6993 0%, #ffc895 60%);
+  opacity: 0;
+  text-align: center;
+  line-height: 200px;
+  font-size: 0px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.flex .close {
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 90%;
+  left: 122%;
+  line-height: 30px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to right bottom, #fc6993 0%, #ffc895 60%);
+  border-radius: 90%;
+  text-align: center;
+}
 .player_logo {
   position: absolute;
   left: 20px;
